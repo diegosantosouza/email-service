@@ -1,5 +1,6 @@
 import { EmailService } from "@/data/protocols/email/email-service"
 import { awsConfig } from "@/main/config/aws-config"
+import { Env } from "@/main/config/env-variables"
 import { SESClient, SendEmailCommand, SendEmailRequest } from "@aws-sdk/client-ses"
 
 export class AWSSESAdapter implements EmailService {
@@ -30,7 +31,7 @@ export class AWSSESAdapter implements EmailService {
           Data: payload.subject,
         },
       },
-      Source: awsConfig.emailSource
+      Source: Env.emailSource
     }
 
     try {
