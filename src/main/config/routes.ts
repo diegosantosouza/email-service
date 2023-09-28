@@ -1,8 +1,10 @@
+import { Express, Router } from 'express'
 import healthcheckRouter from '../routes/healthcheck-route'
-import { FastifyInstance } from 'fastify'
 import sendEmailRouter from '../routes/send-email-route'
 
-export default (app: FastifyInstance): void => {
-  app.register(healthcheckRouter, { prefix: '/healthcheck' })
-  app.register(sendEmailRouter, { prefix: '/send-mail' })
+export default (app: Express): void => {
+  const router = Router()
+  app.use('/', router)
+  router.use(healthcheckRouter)
+  router.use(sendEmailRouter)
 }

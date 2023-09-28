@@ -1,12 +1,12 @@
 import { Controller } from '@/presentation/protocols/controllers'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import { Request, Response } from 'express'
 
-const adaptRoute = (controller: Controller) => async (req: FastifyRequest, reply: FastifyReply) => {
+const adaptRoute = (controller: Controller) => async (req: Request, res: Response) => {
   const httpResponse = await controller.handle(req)
   if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {
-    reply.code(httpResponse.statusCode).send(httpResponse.body)
+    res.status(httpResponse.statusCode).json(httpResponse.body)
   } else {
-    reply.code(httpResponse.statusCode).send({
+    res.status(httpResponse.statusCode).json({
       error: httpResponse.body,
     })
   }
