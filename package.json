@@ -10,13 +10,17 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.414.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "fastify": "^4.23.2",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
     "nodemailer": "^6.9.5",
     "swagger-ui-express": "^5.0.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@types/morgan": "^1.9.6",
     "@types/node": "^20.6.2",
     "@types/nodemailer": "^6.4.11",
     "@types/swagger-ui-express": "^4.1.3",

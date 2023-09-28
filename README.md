@@ -1,2 +1,2 @@
 # email-service
-Used node, typescript, fastify, AWS-SES, swagger.
+Used node, typescript, express, AWS-SES, SMTP, swagger.

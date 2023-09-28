@@ -29,7 +29,7 @@ process.on('unhandledRejection', (reason, promise) => {
 async function startServer() {
   try {
     const app = await setupApp()
-    const server = app.listen({ port: +port }, () => {
+    const server = app.listen(port, () => {
       console.info(`Server initialized on port: ${port}`)
     })
     const exitSignals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM', 'SIGQUIT']

@@ -1,8 +1,9 @@
-import { FastifyInstance } from 'fastify';
-import adaptRoute from '../adapters/fastify-route-adapter';
+import { Router } from 'express'
 import { makeSendMailController } from '../factories/controllers/healthcheck/send-mail-controller-factory';
-import { sendEmailSchema } from '../validation/send-mail.validation';
+import adaptRoute from '../adapters/express-route-adapter';
 
-export default async function sendEmailRouter(fastify: FastifyInstance) {
-  fastify.post('/', { schema: sendEmailSchema }, adaptRoute(makeSendMailController()));
-}
+const sendEmailRouter = Router()
+
+sendEmailRouter.post('/send-mail', adaptRoute(makeSendMailController()))
+
+export default sendEmailRouter

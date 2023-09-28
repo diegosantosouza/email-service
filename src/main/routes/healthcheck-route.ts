@@ -1,7 +1,9 @@
-import { FastifyInstance } from 'fastify';
-import adaptRoute from '../adapters/fastify-route-adapter';
-import { makeHealthCheckController } from '../factories/controllers/healthcheck/healthcheck-controller-factory';
+import { Router } from 'express'
+import adaptRoute from '@/main/adapters/express-route-adapter'
+import { makeHealthCheckController } from '../factories/controllers/healthcheck/healthcheck-controller-factory'
 
-export default async function healthcheckRouter(fastify: FastifyInstance) {
-  fastify.get('/', adaptRoute(makeHealthCheckController()));
-}
+const healthcheckRouter = Router()
+
+healthcheckRouter.get('/healthcheck', adaptRoute(makeHealthCheckController()))
+
+export default healthcheckRouter
